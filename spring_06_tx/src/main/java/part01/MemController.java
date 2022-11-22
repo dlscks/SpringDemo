@@ -3,6 +3,8 @@ package part01;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+// http://lacalhost:8090/myapp/firstmain.st
+
 @Controller
 public class MemController {
 
