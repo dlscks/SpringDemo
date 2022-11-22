@@ -19,26 +19,28 @@ public void setDao(BoardDAO dao) {
 
 @Override
 public int countProcess() {
-	// TODO Auto-generated method stub
-	return 0;
+	return dao.count();
 }
 
 @Override
 public List<BoardDTO> listProcess(PageDTO pv) {
-	// TODO Auto-generated method stub
-	return null;
+	return dao.list(pv);
 }
 
 @Override
 public void insertProcess(BoardDTO dto) {
-	// TODO Auto-generated method stub
-	
+	//답변글이면
+	if(dto.getRef() != 0) {
+		dto.setRe_step(dto.getRe_step() + 1);
+		dto.setRe_level(dto.getRe_level() + 1);
+	}
+	dao.save(dto);
 }
 
 @Override
-public BoardDTO contentProcess(BoardDTO dto) {
-	// TODO Auto-generated method stub
-	return null;
+public BoardDTO contentProcess(int num) {
+	dao.readCount(num);
+	return dao.content(num);
 }
 
 @Override
@@ -67,8 +69,7 @@ public void deleteProcess(int num, String urlpath) {
 
 @Override
 public String fileSelectProcess(int num) {
-	// TODO Auto-generated method stub
-	return null;
+	return dao.getFile(num);
 }
 
 }//end class
