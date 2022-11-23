@@ -39,6 +39,7 @@
   		WHERE num=#{num}
   	</update>
   	
+  	
   	<select id="view" parameterType="int" resultType="dto.BoardDTO">
   		SELECT * FROM board
   		WHERE num=#{num}
@@ -49,5 +50,23 @@
   		WHERE num=#{num}
   	</select>
   	
+  	<update id="reStepCount" parameterType="dto.BoardDTO">
+  		UPDATE board SET re_step = re_step + 1
+  		WHERE ref=#{ref} AND re_step>#{re_step}
+  	</update>
+  	
+  	<update id="update" parameterType="dto.BoardDTO">
+  		UPDATE board
+  		SET subject=#{subject}, email=#{email}, content=#{content}
+  		<if test="upload!=null">
+  			,upload=#{upload}
+  		</if>
+  		WHERE num=#{num}
+  	</update>
+  	
+  	<delete id="delete" parameterType="int">
+  		DELETE FROM board
+  		WHERE num=#{num}
+  	</delete>
   	
 </mapper>
