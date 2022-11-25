@@ -52,6 +52,6 @@ public class SearchDaumController {
 		
 		
 		return total;
-		
+		 
 	}
 }

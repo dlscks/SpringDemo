@@ -1,8 +1,8 @@
 $(document).ready(function(){
- $('#btn').click(process);
+ $('#btn').click(process1);
 });
 
-
+/*
 function process(){
  $.ajax({
     type:'GET',
@@ -14,6 +14,24 @@ function process(){
     }
  });
 }
+*/
+
+
+
+function process1() {
+alert('test');
+  $.ajax({
+     	type:'GET',
+     	url:'https://dapi.kakao.com/v3/search/book?target=title',
+     	headers:{"Authorization": "KakaoAK 5f91b99284e09937b79fa17611f0717e"},
+     	dataType:'json',
+     	data:{"query": $('#search').val()},
+     	success:viewMessage
+     	
+  });
+  
+}
+
 
 function viewMessage(res) {
  //console.log(res);
